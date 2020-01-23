@@ -1,0 +1,27 @@
+h1
+{
+    
+}
+
+.register-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    background: gray;
+    border-radius: 30px;
+}
+
+.register-container form
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.register-container form input
+{
+    margin-bottom: 20px;
+}

@@ -35,5 +35,13 @@ post('/register') {
 }
 
 get('/account') {
-    slim(:account, locals:{id: session[:user_id], status: session[:rank]})
+    result = db.execute("SELECT file_name FROM files WHERE owner_id=?", session[:user_id])
+    slim(:account, locals: { result:result } )
+}
+
+post('/account/add_file') {
+    db.execute("INSERT INTO files (owner_id, file_name, file_size, file_path, publicity) VALUES (?, ?, ?, ?, ?)", 
+    [session[:user_id], params[:file_name], 0, params[:file_name], 0])
+    
+    redirect('/account')
 }

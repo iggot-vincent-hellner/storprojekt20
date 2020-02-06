@@ -1,11 +1,15 @@
 h1 Welcome!
 
-h1 Create a new file
-form action="/account/add_file" method="post"
-    input type="text" name="file_name"
-    input type="submit" value="Create"
+h1 Upload a new file
+form action="/file/upload" method="post" enctype="multipart/form-data"
+    input type="file" name="file"
+    input type="submit" value="Upload"
 
 h1 All your files:
 ul
     - result.each do |file|
-        li = file["file_name"]
+        li = file
+        form action="/file/delete/#{file}" method="post"
+            input type="submit" value="Delete"
+        form action="/file/download/#{file}" method="post"
+            input type="submit" value="Download"

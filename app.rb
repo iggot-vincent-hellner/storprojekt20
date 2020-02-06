@@ -8,6 +8,11 @@ db.results_as_hash = true
 
 enable :sessions
 
+def copy_with_path(src, dst, filename)
+    FileUtils.mkdir_p(dst)
+    FileUtils.cp(src, dst + filename)
+end
+
 get('/') {
     slim(:index)
 }
@@ -35,13 +40,22 @@ post('/register') {
 }
 
 get('/account') {
-    result = db.execute("SELECT file_name FROM files WHERE owner_id=?", session[:user_id])
-    slim(:account, locals: { result:result } )
+    list = Dir.glob("./filesystem/#{session[:user_id]}/*.*").map{|f| f.split('/').last}
+    slim(:account, locals: { result:list } )
 }
 
-post('/account/add_file') {
-    db.execute("INSERT INTO files (owner_id, file_name, file_size, file_path, publicity) VALUES (?, ?, ?, ?, ?)", 
-    [session[:user_id], params[:file_name], 0, params[:file_name], 0])
-    
+post('/file/upload') {
+    tempfile = params[:file][:tempfile]
+    filename = params[:file][:filename]
+    copy_with_path(tempfile.path, "./filesystem/#{session[:user_id]}/", filename)
     redirect('/account')
+}
+
+post('/file/delete/:filename') { |filename|
+    FileUtils.rm("./filesystem/#{session[:user_id]}/#{filename}")
+    redirect('/account')
+}
+
+post('/file/download/:filename') { |filename|
+    send_file("./filesystem/#{session[:user_id]}/#{filename}", :filename => filename, :type => 'Application/octet-stream')
 }

@@ -6,6 +6,13 @@ require './model.rb'
 
 enable :sessions
 
+class File
+    def initialize(path, name)
+        @filepath = path
+        @filename = name
+     end
+end
+
 def copy_with_path(src, dst, filename)
     FileUtils.mkdir_p(dst)
     FileUtils.cp(src, dst + filename)

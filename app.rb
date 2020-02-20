@@ -2,9 +2,7 @@ require 'slim'
 require 'bcrypt'
 require 'sinatra'
 require 'sqlite3'
-
-db = SQLite3::Database.new("db/database.db")
-db.results_as_hash = true
+require './model.rb'
 
 enable :sessions
 
@@ -22,11 +20,10 @@ get('/login-page') {
 }
 
 post('/login') {
-    result = db.execute("SELECT id, password_digest, rank FROM users WHERE email=?", params[:email])
-
-    if(BCrypt::Password.new(result.first["password_digest"]) == params[:password])
-        session[:user_id] = result.first["id"]
-        session[:rank] = result.first["rank"]
+    user_data = get_user_data(params[:email])
+    if(validate_user_password(user_data, params[:password]))
+        session[:user_id] = user_data.first["id"]
+        session[:rank] = user_data.first["rank"]
         redirect('/account')
     else
         redirect('/')
@@ -34,8 +31,7 @@ post('/login') {
 }
 
 post('/register') {
-    password_digest = BCrypt::Password.create(params[:password])
-    db.execute("INSERT INTO users (email, password_digest, rank) VALUES (?, ?, ?)", [params[:email], password_digest, 0])
+    register_user(params[:email], params[:password])
     redirect('/')
 }
 

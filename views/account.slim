@@ -11,5 +11,8 @@ ul
         li = file
         form action="/file/delete/#{file}" method="post"
             input type="submit" value="Delete"
+        form action="/file/share/#{file}" method="post"
+            input type="text" name="email" placeholder="E-mail"
+            input type="submit" value="Share"
         form action="/file/download/#{file}" method="post"
             input type="submit" value="Download"

@@ -2,16 +2,10 @@ require 'slim'
 require 'bcrypt'
 require 'sinatra'
 require 'sqlite3'
+require 'byebug'
 require './model.rb'
 
 enable :sessions
-
-class File
-    def initialize(path, name)
-        @filepath = path
-        @filename = name
-     end
-end
 
 def copy_with_path(src, dst, filename)
     FileUtils.mkdir_p(dst)
@@ -51,14 +45,24 @@ post('/file/upload') {
     tempfile = params[:file][:tempfile]
     filename = params[:file][:filename]
     copy_with_path(tempfile.path, "./filesystem/#{session[:user_id]}/", filename)
+
+    add_file_to_database(filename, "./filesystem/#{session[:user_id]}/", -1, session[:user_id])
+
     redirect('/account')
 }
 
 post('/file/delete/:filename') { |filename|
     FileUtils.rm("./filesystem/#{session[:user_id]}/#{filename}")
+
+    delete_file_from_database(session[:user_id], filename)
+
     redirect('/account')
 }
 
 post('/file/download/:filename') { |filename|
     send_file("./filesystem/#{session[:user_id]}/#{filename}", :filename => filename, :type => 'Application/octet-stream')
+}
+
+post('/file/share/:filename') { |filename|
+    share_file(filename, params[:email], session[:user_id])
 }

@@ -37,8 +37,9 @@ post('/register') {
 }
 
 get('/account') {
-    list = Dir.glob("./filesystem/#{session[:user_id]}/*.*").map{|f| f.split('/').last}
-    slim(:account, locals: { result:list } )
+    list = Dir.glob("./filesystem/#{session[:user_id]}/*.*").map{|f| f.split('/').last} #TODO: Gör så detta sker via databasen och model.rb då kan man få id till slimen också så slipper ta fram id genom filnamn i delete och edit och liknade i model.rb
+    shared = get_shared_files(session[:user_id])
+    slim(:account, locals: { result:list, shared:shared } )
 }
 
 post('/file/upload') {

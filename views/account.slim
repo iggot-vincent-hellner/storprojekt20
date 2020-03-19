@@ -16,3 +16,8 @@ ul
             input type="submit" value="Share"
         form action="/file/download/#{file}" method="post"
             input type="submit" value="Download"
+
+h1 All your shared files:
+ul
+    - shared.each do |file|
+        li = file["file_name"]

@@ -35,16 +35,28 @@ def add_file_to_database(name, path, size, owner)
    $db.execute("INSERT INTO files (owner_id, file_name, file_size, file_path, publicity) VALUES (?, ?, ?, ?, 0)", [owner, name, size, path])
 end
 
-def delete_file_from_database(owner, name)
-   file_id = $db.execute("SELECT id FROM files WHERE file_name = ? AND owner_id = ?", [name, owner])[0]["id"]
+def delete_file_from_database(file_id)
+   #file_id = $db.execute("SELECT id FROM files WHERE file_name = ? AND owner_id = ?", [name, owner])[0]["id"]
    $db.execute("DELETE FROM files WHERE id = ?", file_id)
    $db.execute("DELETE FROM file_share_table WHERE file_id = ?", file_id)
 end
 
-def share_file(filename, email, owner) 
-   file_id = $db.execute("SELECT id FROM files WHERE file_name = ? AND file_path = ?", [filename, "./filesystem/#{owner}/"])[0]["id"] #TODO: gör mega request istället
+def share_file(file_id, email) 
    user_id = $db.execute("SELECT id FROM users WHERE email = ?", [email])[0]["id"]
    $db.execute("INSERT INTO file_share_table (file_id, user_id) VALUES (?, ?)", [file_id, user_id])
+end
+
+def get_full_file_path(file_id)
+   path = $db.execute("SELECT file_path FROM files WHERE id = ?", file_id)[0]["file_path"]
+   return path + $db.execute("SELECT file_name FROM files WHERE id = ?", file_id)[0]["file_name"]
+end
+
+def get_file_name(file_id)
+   return $db.execute("SELECT file_name FROM files WHERE id = ?", file_id)[0]["file_name"]
+end
+
+def get_owned_files(user_id)
+   return $db.execute("SELECT * FROM files WHERE owner_id = ?", user_id)
 end
 
 def get_shared_files(user_id)

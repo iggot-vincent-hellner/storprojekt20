@@ -37,7 +37,7 @@ post('/register') {
 }
 
 get('/account') {
-    list = Dir.glob("./filesystem/#{session[:user_id]}/*.*").map{|f| f.split('/').last} #TODO: Gör så detta sker via databasen och model.rb då kan man få id till slimen också så slipper ta fram id genom filnamn i delete och edit och liknade i model.rb
+    list = get_owned_files(session[:user_id])
     shared = get_shared_files(session[:user_id])
     slim(:account, locals: { result:list, shared:shared } )
 }
@@ -45,25 +45,25 @@ get('/account') {
 post('/file/upload') {
     tempfile = params[:file][:tempfile]
     filename = params[:file][:filename]
-    copy_with_path(tempfile.path, "./filesystem/#{session[:user_id]}/", filename)
 
+    copy_with_path(tempfile.path, "./filesystem/#{session[:user_id]}/", filename)
     add_file_to_database(filename, "./filesystem/#{session[:user_id]}/", -1, session[:user_id])
 
     redirect('/account')
 }
 
-post('/file/delete/:filename') { |filename|
-    FileUtils.rm("./filesystem/#{session[:user_id]}/#{filename}")
-
-    delete_file_from_database(session[:user_id], filename)
+post('/file/delete/:file_id') { |file_id|
+    FileUtils.rm(get_full_file_path(file_id))
+    delete_file_from_database(file_id)
 
     redirect('/account')
 }
 
-post('/file/download/:filename') { |filename|
-    send_file("./filesystem/#{session[:user_id]}/#{filename}", :filename => filename, :type => 'Application/octet-stream')
+post('/file/download/:file_id') { |file_id|
+    send_file(get_full_file_path(file_id), :filename => get_file_name(file_id), :type => 'Application/octet-stream')
 }
 
-post('/file/share/:filename') { |filename|
-    share_file(filename, params[:email], session[:user_id])
+post('/file/share/:file_id') { |file_id|
+    share_file(file_id, params[:email])
+    redirect('/account')
 }

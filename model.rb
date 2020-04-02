@@ -3,8 +3,7 @@ require 'sqlite3'
 require 'byebug'
 
 
-#require 'securerandom'
-#SecureRandom.uuid # => "96b0a57c-d9ae-453f-b56f-3b154eb10cda"
+require 'securerandom'
 
 #TODO function to generate unique id
 #set file to publicity 1 and make a route to /file/url 
@@ -36,7 +35,6 @@ def add_file_to_database(name, path, size, owner)
 end
 
 def delete_file_from_database(file_id)
-   #file_id = $db.execute("SELECT id FROM files WHERE file_name = ? AND owner_id = ?", [name, owner])[0]["id"]
    $db.execute("DELETE FROM files WHERE id = ?", file_id)
    $db.execute("DELETE FROM file_share_table WHERE file_id = ?", file_id)
 end
@@ -67,4 +65,22 @@ def get_shared_files(user_id)
       files << $db.execute("SELECT * FROM files WHERE id = ?", id["file_id"])[0]
    end
    return files
+end
+
+def generate_unique_url()
+   return SecureRandom.uuid
+end
+
+def get_file_unique_url(file_id)
+   url = $db.execute("SELECT unique_url FROM files WHERE id = ?", file_id)[0]["unique_url"]
+   if url == nil
+      url = generate_unique_url();
+      $db.execute("UPDATE files SET unique_url = ? WHERE id = ?", [url, file_id])[0]
+   end
+   p url
+   return url
+end
+
+def get_file_from_url(url)
+   return $db.execute("SELECT * FROM files WHERE unique_url = ?", url)[0]
 end

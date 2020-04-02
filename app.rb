@@ -59,8 +59,17 @@ post('/file/delete/:file_id') { |file_id|
     redirect('/account')
 }
 
-post('/file/download/:file_id') { |file_id|
+post('/file/generate_id/:file_id') { |file_id| #KOLLA OM ÄGARE
+    get_file_unique_url(file_id) #Kankse ha generate funk inte get?
+    redirect('/account')
+}
+
+post('/file/download/:file_id') { |file_id| #KOLLA OM MAN HAR PERMISSION ATT LADDA NER (ÄGARE, DELAD, ELLER PUBLIC (URL))
     send_file(get_full_file_path(file_id), :filename => get_file_name(file_id), :type => 'Application/octet-stream')
+}
+
+get('/file/:file_url') { |file_url|
+    slim(:"files/index", locals: {file:get_file_from_url(file_url)})
 }
 
 post('/file/share/:file_id') { |file_id|

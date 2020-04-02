@@ -7,16 +7,6 @@ form action="/file/upload" method="post" enctype="multipart/form-data"
 
 h1 All your files:
 ul
-    /*- result.each do |file|
-        li = file
-        form action="/file/delete/#{file}" method="post"
-            input type="submit" value="Delete"
-        form action="/file/share/#{file}" method="post"
-            input type="text" name="email" placeholder="E-mail"
-            input type="submit" value="Share"
-        form action="/file/download/#{file}" method="post"
-            input type="submit" value="Download"*/
-
     - result.each do |file|
         li = file["file_name"]
         form action="/file/delete/#{file["id"]}" method="post"
@@ -26,8 +16,17 @@ ul
             input type="submit" value="Share"
         form action="/file/download/#{file["id"]}" method="post"
             input type="submit" value="Download"
+        - if file["unique_url"] == nil
+            form action="/file/generate_id/#{file["id"]}" method="post"
+                input type="submit" value="Generate ID"
+        - else
+            p = "Share URL: http://127.0.0.1:4567/file/#{file["unique_url"]}"
 
 h1 All your shared files:
 ul
     - shared.each do |file|
         li = file["file_name"]
+        form action="/file/download/#{file["id"]}" method="post"
+            input type="submit" value="Download"
+        - if file["unique_url"] != nil
+            p = "Share URL: http://127.0.0.1:4567/file/#{file["unique_url"]}"

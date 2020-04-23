@@ -1,13 +1,8 @@
-h1 Welcome!
+h1 Welcome premium user
 
-h1 Upload a new file
-form action="/file/upload" method="post" enctype="multipart/form-data"
-    input type="file" name="file"
-    input type="submit" value="Upload"
-
-h1 All your files:
+h1 All users' files:
 ul
-    - result.each do |file|
+    - files.each do |file|
         li = file["file_name"]
         form action="/file/delete/#{file["id"]}" method="post"
             input type="submit" value="Delete"
@@ -26,13 +21,4 @@ ul
             form action="/file/generate_id/#{file["id"]}" method="post"
                 input type="submit" value="Generate ID"
         - else
-            p = "Share URL: http://127.0.0.1:4567/file/#{file["unique_url"]}"
-
-h1 All your shared files:
-ul
-    - shared.each do |file|
-        li = file["file_name"]
-        form action="/file/download/#{file["id"]}" method="post"
-            input type="submit" value="Download"
-        - if file["unique_url"] != nil
             p = "Share URL: http://127.0.0.1:4567/file/#{file["unique_url"]}"

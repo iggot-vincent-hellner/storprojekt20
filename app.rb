@@ -12,6 +12,17 @@ def copy_with_path(src, dst, filename)
     FileUtils.cp(src, dst + filename)
 end
 
+before do
+    if (session[:user_id] == nil) && (request.path_info != '/') && (request.path_info != '/register') && (request.path_info != '/login-page') && (request.path_info != '/login') && (request.path_info != '/login') && (request.path_info != '/error') && (!request.path_info.start_with?('/file')) 
+        session[:error] = "You need to log in to see this"
+        redirect('/error')
+    end
+end
+
+get('/error') {
+    slim(:error, locals: {error: session[:error]})
+}
+
 get('/') {
     slim(:index)
 }
@@ -27,12 +38,17 @@ post('/login') {
         session[:rank] = user_data.first["rank"]
         redirect('/account')
     else
-        redirect('/')
+        session[:error] = "Invalid username or password"
+        redirect('/error')
     end
 }
 
 post('/register') {
-    register_user(params[:email], params[:password])
+    if !params[:email].include?('@')
+        session[:error] = "Not a valid email"
+        redirect('/error')
+    end
+    register_user(params[:email], params[:password], params[:premium])
     redirect('/')
 }
 
@@ -66,6 +82,24 @@ post('/file/generate_id/:file_id') { |file_id| #KOLLA OM ÄGARE
 
 post('/file/download/:file_id') { |file_id| #KOLLA OM MAN HAR PERMISSION ATT LADDA NER (ÄGARE, DELAD, ELLER PUBLIC (URL))
     send_file(get_full_file_path(file_id), :filename => get_file_name(file_id), :type => 'Application/octet-stream')
+}
+
+post('/file/publicise/:file_id') { |file_id| #KOLLA OM MAN HAR PERMISSION ATT LADDA NER (ÄGARE, DELAD, ELLER PUBLIC (URL))
+    make_public(file_id)
+    redirect('/account')
+}
+
+post('/file/privatise/:file_id') { |file_id| #KOLLA OM MAN HAR PERMISSION ATT LADDA NER (ÄGARE, DELAD, ELLER PUBLIC (URL))
+    make_private(file_id)
+    redirect('/account')
+}
+
+get('/file') { #Ändra till /files
+    if(session[:user_id] != nil && get_user_rank(session[:user_id]) == 1)
+        slim(:"files/premium_view", locals: {files:get_all_files()})
+    else
+        slim(:"files/all", locals: {files:get_all_public_files()})
+    end
 }
 
 get('/file/:file_url') { |file_url|

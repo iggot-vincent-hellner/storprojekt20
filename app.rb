@@ -27,7 +27,22 @@ get('/') {
     slim(:index)
 }
 
-get('/login-page') {
+before '/login-page' do
+    if session[:incorrect_attempts] != nil && session[:incorrect_attempts] >= 2
+        if session[:has_cooldown] == nil || session[:has_cooldown] == false
+            session[:has_cooldown] = true
+            session[:cooldown_start] = Time.now.to_i
+        elsif Time.now.to_i - session[:cooldown_start] >= 20
+            session[:has_cooldown] = false
+            session[:incorrect_attempts] = 0
+        else
+            session[:error] = "You have to wait #{20 - (Time.now.to_i - session[:cooldown_start])} seconds"
+            redirect('/error')
+        end
+    end
+end
+
+get('/login-page') { #TODO ändra till "/login"
     slim(:"login-page")
 }
 
@@ -38,6 +53,12 @@ post('/login') {
         session[:rank] = user_data.first["rank"]
         redirect('/account')
     else
+        if session[:incorrect_attempts] == nil
+            session[:incorrect_attempts] = 1
+        else
+            session[:incorrect_attempts] += 1
+        end
+
         session[:error] = "Invalid username or password"
         redirect('/error')
     end

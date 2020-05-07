@@ -1,6 +1,0 @@
-h1 All public files:
-ul
-    - files.each do |file|
-        li = file["file_name"]
-        form action="/file/download/#{file["id"]}" method="post"
-            input type="submit" value="Download"

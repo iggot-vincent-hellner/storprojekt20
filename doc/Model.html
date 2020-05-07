@@ -1,0 +1,2152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Model
+  
+    &mdash; Documentation by YARD 0.9.25
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Model";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/custom.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index (M)</a> &raquo;
+    
+    
+    <span class="title">Model</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Model
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>model.rb</dd>
+  </dl>
+  
+</div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add_file_to_database-instance_method" title="#add_file_to_database (instance method)">#<strong>add_file_to_database</strong>(name, path, size, owner)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Adds a new file to the database.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#copy_with_path-instance_method" title="#copy_with_path (instance method)">#<strong>copy_with_path</strong>(src, dst, filename)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Copies a file in the filesystem.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete_file_from_database-instance_method" title="#delete_file_from_database (instance method)">#<strong>delete_file_from_database</strong>(file_id)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Deletes a file from the database.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generate_unique_url-instance_method" title="#generate_unique_url (instance method)">#<strong>generate_unique_url</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generates a uuid.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_all_files-instance_method" title="#get_all_files (instance method)">#<strong>get_all_files</strong>  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets all the files.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_all_public_files-instance_method" title="#get_all_public_files (instance method)">#<strong>get_all_public_files</strong>  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets all the files that are public.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_file_from_url-instance_method" title="#get_file_from_url (instance method)">#<strong>get_file_from_url</strong>(url)  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the file with a certain uuid.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_file_name-instance_method" title="#get_file_name (instance method)">#<strong>get_file_name</strong>(file_id)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the name of a file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_file_unique_url-instance_method" title="#get_file_unique_url (instance method)">#<strong>get_file_unique_url</strong>(file_id)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the uuid of a file or generates one if it doesnt have one.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_full_file_path-instance_method" title="#get_full_file_path (instance method)">#<strong>get_full_file_path</strong>(file_id)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the full path in the filesystem to a file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_owned_files-instance_method" title="#get_owned_files (instance method)">#<strong>get_owned_files</strong>(user_id)  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the files owned by a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_shared_files-instance_method" title="#get_shared_files (instance method)">#<strong>get_shared_files</strong>(user_id)  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets all the files shared with a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_user_data-instance_method" title="#get_user_data (instance method)">#<strong>get_user_data</strong>(email)  &#x21d2; Hash<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Finds user data.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_user_rank-instance_method" title="#get_user_rank (instance method)">#<strong>get_user_rank</strong>(user_id)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the rank of a user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#make_private-instance_method" title="#make_private (instance method)">#<strong>make_private</strong>(file_id)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Makes a file private.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#make_public-instance_method" title="#make_public (instance method)">#<strong>make_public</strong>(file_id)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Makes a file publc.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register_user-instance_method" title="#register_user (instance method)">#<strong>register_user</strong>(email, password, premium)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Registers a new user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#share_file-instance_method" title="#share_file (instance method)">#<strong>share_file</strong>(file_id, email)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Shares a file with a different user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validate_user_password-instance_method" title="#validate_user_password (instance method)">#<strong>validate_user_password</strong>(user_data, password)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Validates user password.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="add_file_to_database-instance_method">
+  
+    #<strong>add_file_to_database</strong>(name, path, size, owner)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Adds a new file to the database</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the name of the file</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the path of the file</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>size</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the size of the file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 68</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_add_file_to_database'>add_file_to_database</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='id identifier rubyid_size'>size</span><span class='comma'>,</span> <span class='id identifier rubyid_owner'>owner</span><span class='rparen'>)</span>
+   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INSERT INTO files (owner_id, file_name, file_size, file_path, publicity) VALUES (?, ?, ?, ?, 0)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_owner'>owner</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_size'>size</span><span class='comma'>,</span> <span class='id identifier rubyid_path'>path</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="copy_with_path-instance_method">
+  
+    #<strong>copy_with_path</strong>(src, dst, filename)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Copies a file in the filesystem</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>source</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the source of the file</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>destination</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the destination to copy to</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the name of the file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_copy_with_path'>copy_with_path</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span> <span class='id identifier rubyid_dst'>dst</span><span class='comma'>,</span> <span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+   <span class='const'>FileUtils</span><span class='period'>.</span><span class='id identifier rubyid_mkdir_p'>mkdir_p</span><span class='lparen'>(</span><span class='id identifier rubyid_dst'>dst</span><span class='rparen'>)</span>
+   <span class='const'>FileUtils</span><span class='period'>.</span><span class='id identifier rubyid_cp'>cp</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span> <span class='id identifier rubyid_dst'>dst</span> <span class='op'>+</span> <span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete_file_from_database-instance_method">
+  
+    #<strong>delete_file_from_database</strong>(file_id)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Deletes a file from the database</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the id of the file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 75</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_file_from_database'>delete_file_from_database</span><span class='lparen'>(</span><span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span>
+   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DELETE FROM files WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span>
+   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DELETE FROM file_share_table WHERE file_id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="generate_unique_url-instance_method">
+  
+    #<strong>generate_unique_url</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generates a uuid</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the uuid that was generated</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+156
+157
+158</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 156</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_generate_unique_url'>generate_unique_url</span><span class='lparen'>(</span><span class='rparen'>)</span>
+   <span class='kw'>return</span> <span class='const'>SecureRandom</span><span class='period'>.</span><span class='id identifier rubyid_uuid'>uuid</span> 
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_all_files-instance_method">
+  
+    #<strong>get_all_files</strong>  &#x21d2; <tt>Array</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets all the files</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>all files</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+134
+135
+136</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 134</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_all_files'>get_all_files</span><span class='lparen'>(</span><span class='rparen'>)</span>
+   <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM files</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_all_public_files-instance_method">
+  
+    #<strong>get_all_public_files</strong>  &#x21d2; <tt>Array</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets all the files that are public</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>all public files</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 127</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_all_public_files'>get_all_public_files</span><span class='lparen'>(</span><span class='rparen'>)</span>
+   <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM files WHERE publicity = 1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_file_from_url-instance_method">
+  
+    #<strong>get_file_from_url</strong>(url)  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the file with a certain uuid</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>uuid</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the uuid</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the file with the uuid</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+193
+194
+195</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 193</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_file_from_url'>get_file_from_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+   <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM files WHERE unique_url = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_file_name-instance_method">
+  
+    #<strong>get_file_name</strong>(file_id)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the name of a file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the id of the file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the name of the file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+111
+112
+113</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 111</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_file_name'>get_file_name</span><span class='lparen'>(</span><span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span>
+   <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT file_name FROM files WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>file_name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_file_unique_url-instance_method">
+  
+    #<strong>get_file_unique_url</strong>(file_id)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the uuid of a file or generates one if it doesnt have one</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the id of the file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the uuid</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+179
+180
+181
+182
+183
+184
+185
+186</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 179</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_file_unique_url'>get_file_unique_url</span><span class='lparen'>(</span><span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span>
+   <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT unique_url FROM files WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unique_url</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+   <span class='kw'>if</span> <span class='id identifier rubyid_url'>url</span> <span class='op'>==</span> <span class='kw'>nil</span>
+      <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_unique_url'><span class='object_link'><a href="#generate_unique_url-instance_method" title="Model#generate_unique_url (method)">generate_unique_url</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span><span class='semicolon'>;</span>
+      <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UPDATE files SET unique_url = ? WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_file_id'>file_id</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+   <span class='kw'>end</span>
+   <span class='kw'>return</span> <span class='id identifier rubyid_url'>url</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_full_file_path-instance_method">
+  
+    #<strong>get_full_file_path</strong>(file_id)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the full path in the filesystem to a file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the id of the file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the path to the file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+101
+102
+103
+104</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 101</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_full_file_path'>get_full_file_path</span><span class='lparen'>(</span><span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span>
+   <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT file_path FROM files WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>file_path</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+   <span class='kw'>return</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>+</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT file_name FROM files WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>file_name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_owned_files-instance_method">
+  
+    #<strong>get_owned_files</strong>(user_id)  &#x21d2; <tt>Array</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the files owned by a user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the id of the owner</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the files owned my the user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 120</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_owned_files'>get_owned_files</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+   <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM files WHERE owner_id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_shared_files-instance_method">
+  
+    #<strong>get_shared_files</strong>(user_id)  &#x21d2; <tt>Array</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets all the files shared with a user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the id of the user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>all files shared with the user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143
+144
+145
+146
+147
+148
+149
+150
+151</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 143</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_shared_files'>get_shared_files</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+   <span class='id identifier rubyid_shared_file_ids'>shared_file_ids</span> <span class='op'>=</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT file_id FROM file_share_table WHERE user_id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+   
+   <span class='id identifier rubyid_files'>files</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+   <span class='id identifier rubyid_shared_file_ids'>shared_file_ids</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_id'>id</span><span class='op'>|</span>
+      <span class='id identifier rubyid_files'>files</span> <span class='op'>&lt;&lt;</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT * FROM files WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_id'>id</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>file_id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+   <span class='kw'>end</span>
+   <span class='kw'>return</span> <span class='id identifier rubyid_files'>files</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_user_data-instance_method">
+  
+    #<strong>get_user_data</strong>(email)  &#x21d2; <tt>Hash</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Finds user data</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>Email</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>email of the user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><ul><li>
+<p>:id [Integer] The id of the user</p>
+</li><li>
+<p>:password_digest [String] The password digest of the user</p>
+</li><li>
+<p>:rank [Integer] rank of the user</p>
+</li></ul>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if not found</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_user_data'>get_user_data</span><span class='lparen'>(</span><span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
+   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT id, password_digest, rank FROM users WHERE email=?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_user_rank-instance_method">
+  
+    #<strong>get_user_rank</strong>(user_id)  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the rank of a user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the id of the user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the rank of the user</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+202
+203
+204</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 202</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_get_user_rank'>get_user_rank</span><span class='lparen'>(</span><span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+   <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT rank FROM users WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>rank</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="make_private-instance_method">
+  
+    #<strong>make_private</strong>(file_id)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Makes a file private</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the id of the file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+170
+171
+172</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 170</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_make_private'>make_private</span><span class='lparen'>(</span><span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span>
+   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UPDATE files SET publicity = 0 WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_file_id'>file_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="make_public-instance_method">
+  
+    #<strong>make_public</strong>(file_id)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Makes a file publc</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the id of the file</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+163
+164
+165</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 163</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_make_public'>make_public</span><span class='lparen'>(</span><span class='id identifier rubyid_file_id'>file_id</span><span class='rparen'>)</span>
+   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UPDATE files SET publicity = 1 WHERE id = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_file_id'>file_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="register_user-instance_method">
+  
+    #<strong>register_user</strong>(email, password, premium)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Registers a new user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>email</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the email of the new user</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the password of the new user</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>premium</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>is the new user premium</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_register_user'>register_user</span><span class='lparen'>(</span><span class='id identifier rubyid_email'>email</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='comma'>,</span> <span class='id identifier rubyid_premium'>premium</span><span class='rparen'>)</span>
+   <span class='id identifier rubyid_password_digest'>password_digest</span> <span class='op'>=</span> <span class='const'>BCrypt</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INSERT INTO users (email, password_digest, rank) VALUES (?, ?, ?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_email'>email</span><span class='comma'>,</span> <span class='id identifier rubyid_password_digest'>password_digest</span><span class='comma'>,</span> <span class='id identifier rubyid_premium'>premium</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>on</span><span class='tstring_end'>&quot;</span></span> <span class='op'>?</span> <span class='int'>1</span> <span class='op'>:</span> <span class='int'>0</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="share_file-instance_method">
+  
+    #<strong>share_file</strong>(file_id, email)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Shares a file with a different user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the id of the file to share</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>email</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the email of the person to share with</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>whether the the file was shared with a valid user or not</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88
+89
+90
+91
+92
+93
+94</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 86</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_share_file'>share_file</span><span class='lparen'>(</span><span class='id identifier rubyid_file_id'>file_id</span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
+   <span class='id identifier rubyid_user_data'>user_data</span> <span class='op'>=</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SELECT id FROM users WHERE email = ?</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_email'>email</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+   <span class='kw'>if</span> <span class='id identifier rubyid_user_data'>user_data</span> <span class='op'>==</span> <span class='kw'>nil</span>
+      <span class='kw'>return</span> <span class='kw'>false</span>
+   <span class='kw'>end</span>
+   <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_user_data'>user_data</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INSERT INTO file_share_table (file_id, user_id) VALUES (?, ?)</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_file_id'>file_id</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+   <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="validate_user_password-instance_method">
+  
+    #<strong>validate_user_password</strong>(user_data, password)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Validates user password</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the user data</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the entered password</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>whether the the password was correct or not</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_validate_user_password'>validate_user_password</span><span class='lparen'>(</span><span class='id identifier rubyid_user_data'>user_data</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+   <span class='kw'>if</span> <span class='id identifier rubyid_user_data'>user_data</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span> <span class='op'>==</span> <span class='kw'>nil</span>
+      <span class='kw'>false</span>
+   <span class='kw'>elsif</span> <span class='lparen'>(</span><span class='const'>BCrypt</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_user_data'>user_data</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password_digest</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+      <span class='kw'>true</span>
+   <span class='kw'>else</span>
+      <span class='kw'>false</span>
+   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Thu May  7 14:28:59 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.25 (ruby-2.5.1).
+</div>
+
+    </div>
+  </body>
+</html>

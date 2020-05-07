@@ -1,7 +1,7 @@
 h1 Welcome!
 
 h1 Upload a new file
-form action="/file/upload" method="post" enctype="multipart/form-data"
+form action="/files/upload" method="post" enctype="multipart/form-data"
     input type="file" name="file"
     input type="submit" value="Upload"
 
@@ -9,30 +9,30 @@ h1 All your files:
 ul
     - result.each do |file|
         li = file["file_name"]
-        form action="/file/delete/#{file["id"]}" method="post"
+        form action="/files/delete/#{file["id"]}" method="post"
             input type="submit" value="Delete"
-        form action="/file/share/#{file["id"]}" method="post"
+        form action="/files/share/#{file["id"]}" method="post"
             input type="text" name="email" placeholder="E-mail"
             input type="submit" value="Share"
-        form action="/file/download/#{file["id"]}" method="post"
+        form action="/files/download/#{file["id"]}" method="post"
             input type="submit" value="Download"
         - if file["publicity"] == 0
-            form action="/file/publicise/#{file["id"]}" method="post"
+            form action="/files/publicise/#{file["id"]}" method="post"
                 input type="submit" value="Make Public"
         - else
-            form action="/file/privatise/#{file["id"]}" method="post"
+            form action="/files/privatise/#{file["id"]}" method="post"
                 input type="submit" value="Make Private"
         - if file["unique_url"] == nil
-            form action="/file/generate_id/#{file["id"]}" method="post"
+            form action="/files/generate_id/#{file["id"]}" method="post"
                 input type="submit" value="Generate ID"
         - else
-            p = "Share URL: http://127.0.0.1:4567/file/#{file["unique_url"]}"
+            p = "Share URL: http://127.0.0.1:4567/files/#{file["unique_url"]}"
 
 h1 All your shared files:
 ul
     - shared.each do |file|
         li = file["file_name"]
-        form action="/file/download/#{file["id"]}" method="post"
+        form action="/files/download/#{file["id"]}" method="post"
             input type="submit" value="Download"
         - if file["unique_url"] != nil
-            p = "Share URL: http://127.0.0.1:4567/file/#{file["unique_url"]}"
+            p = "Share URL: http://127.0.0.1:4567/files/#{file["unique_url"]}"

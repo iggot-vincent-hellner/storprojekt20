@@ -5,12 +5,9 @@ require 'sqlite3'
 require 'byebug'
 require './model.rb'
 
-enable :sessions
+include Model
 
-def copy_with_path(src, dst, filename)
-    FileUtils.mkdir_p(dst)
-    FileUtils.cp(src, dst + filename)
-end
+enable :sessions
 
 before do
     if (session[:user_id] == nil) && (request.path_info != '/') && (request.path_info != '/register') && (request.path_info != '/login-page') && (request.path_info != '/login') && (request.path_info != '/login') && (request.path_info != '/error') && (!request.path_info.start_with?('/file')) 
@@ -19,15 +16,19 @@ before do
     end
 end
 
+# Displays error page
+#
 get('/error') {
     slim(:error, locals: {error: session[:error]})
 }
 
+# Displays start page where you can register
+#
 get('/') {
     slim(:index)
 }
 
-before '/login-page' do
+before '/login' do
     if session[:incorrect_attempts] != nil && session[:incorrect_attempts] >= 2
         if session[:has_cooldown] == nil || session[:has_cooldown] == false
             session[:has_cooldown] = true
@@ -42,10 +43,18 @@ before '/login-page' do
     end
 end
 
+# Displays login page
+#
 get('/login-page') { #TODO ändra till "/login"
-    slim(:"login-page")
+    slim(:"login")
 }
 
+# Logs you in or gives error based on params
+#
+# @param [String] :email, the email of the user
+# @param [String] :password, the password of the user
+#
+# @see Model#validate_user_password
 post('/login') {
     user_data = get_user_data(params[:email])
     if(validate_user_password(user_data, params[:password]))
@@ -64,6 +73,13 @@ post('/login') {
     end
 }
 
+# Register you in or gives error based on if the email is valid
+#
+# @param [String] :email, the email of the user
+# @param [String] :password, the password of the user
+# @param [Integer] :premium, did the user register for premium
+#
+# @see Model#register_user
 post('/register') {
     if !params[:email].include?('@')
         session[:error] = "Not a valid email"
@@ -73,13 +89,22 @@ post('/register') {
     redirect('/')
 }
 
+# Displays the account home page where you can see and edit your files
+#
+# @see Model#get_owned_files
+# @see Model#get_shared_files
 get('/account') {
     list = get_owned_files(session[:user_id])
     shared = get_shared_files(session[:user_id])
     slim(:account, locals: { result:list, shared:shared } )
 }
 
-post('/file/upload') {
+# Upload a new file
+#
+# @param [File] :file, the file to be uploaded
+# @see Model#copy_with_path
+# @see Model#add_file_to_database
+post('/files/upload') {
     tempfile = params[:file][:tempfile]
     filename = params[:file][:filename]
 
@@ -89,45 +114,81 @@ post('/file/upload') {
     redirect('/account')
 }
 
-post('/file/delete/:file_id') { |file_id|
+# Deletes a single file
+#
+# @param [Integer] :file_id, the file to be deleted
+# @see Model#delete_from_database
+# @see Model#get_full_path
+post('/files/delete/:file_id') { |file_id|
     FileUtils.rm(get_full_file_path(file_id))
     delete_file_from_database(file_id)
 
     redirect('/account')
 }
 
-post('/file/generate_id/:file_id') { |file_id| #KOLLA OM ÄGARE
-    get_file_unique_url(file_id) #Kankse ha generate funk inte get?
+# Generates unique url-id for single file
+#
+# @param [Integer] :file_id, the file to be generated for
+# @see Model#get_file_unique_id
+post('/files/generate_id/:file_id') { |file_id|
+    get_file_unique_url(file_id) 
     redirect('/account')
 }
 
-post('/file/download/:file_id') { |file_id| #KOLLA OM MAN HAR PERMISSION ATT LADDA NER (ÄGARE, DELAD, ELLER PUBLIC (URL))
+# Downloads a single file
+#
+# @param [Integer] :file_id, the file to be downloaded
+post('/files/download/:file_id') { |file_id| 
     send_file(get_full_file_path(file_id), :filename => get_file_name(file_id), :type => 'Application/octet-stream')
 }
 
-post('/file/publicise/:file_id') { |file_id| #KOLLA OM MAN HAR PERMISSION ATT LADDA NER (ÄGARE, DELAD, ELLER PUBLIC (URL))
+# Plublicises a single file
+#
+# @param [Integer] :file_id, the file to be publicised
+# @see Model#make_public
+post('/files/publicise/:file_id') { |file_id| 
     make_public(file_id)
     redirect('/account')
 }
 
-post('/file/privatise/:file_id') { |file_id| #KOLLA OM MAN HAR PERMISSION ATT LADDA NER (ÄGARE, DELAD, ELLER PUBLIC (URL))
+# Privatises a single file
+#
+# @param [Integer] :file_id, the file to be privatised
+# @see Model#make_private
+post('/files/privatise/:file_id') { |file_id|
     make_private(file_id)
     redirect('/account')
 }
 
-get('/file') { #Ändra till /files
+# Displays all pubic files or all files if user is premium
+#
+# @see Model#get_all_files
+# @see Model#get_all_public_files
+get('/files') {
     if(session[:user_id] != nil && get_user_rank(session[:user_id]) == 1)
         slim(:"files/premium_view", locals: {files:get_all_files()})
     else
-        slim(:"files/all", locals: {files:get_all_public_files()})
+        slim(:"files/index", locals: {files:get_all_public_files()})
     end
 }
 
-get('/file/:file_url') { |file_url|
-    slim(:"files/index", locals: {file:get_file_from_url(file_url)})
+# Displays a single file based on url-id
+#
+# @param [String] :file_url, the unique url-id for the file to be displayed
+# @see Model#get_file_from_url
+get('/files/:file_url') { |file_url|
+    slim(:"files/show", locals: {file:get_file_from_url(file_url)})
 }
 
-post('/file/share/:file_id') { |file_id|
-    share_file(file_id, params[:email])
+# Shares a single file
+#
+# @param [Integer] :file_id, the file to be shared
+# @see Model#share_file
+post('/files/share/:file_id') { |file_id|
+    success = share_file(file_id, params[:email])
+    if(!success)
+        session[:error] = "Not a valid user"
+        redirect('/error')
+    end
     redirect('/account')
 }

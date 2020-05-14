@@ -67,7 +67,6 @@ post('/login') {
         else
             session[:incorrect_attempts] += 1
         end
-
         session[:error] = "Invalid username or password"
         redirect('/error')
     end
@@ -119,7 +118,7 @@ post('/files/upload') {
 # @param [Integer] :file_id, the file to be deleted
 # @see Model#delete_from_database
 # @see Model#get_full_path
-post('/files/delete/:file_id') { |file_id|
+post('/files/:file_id/delete') { |file_id|
     FileUtils.rm(get_full_file_path(file_id))
     delete_file_from_database(file_id)
 
@@ -130,7 +129,7 @@ post('/files/delete/:file_id') { |file_id|
 #
 # @param [Integer] :file_id, the file to be generated for
 # @see Model#get_file_unique_id
-post('/files/generate_id/:file_id') { |file_id|
+post('/files/:file_id/generate_id') { |file_id|
     get_file_unique_url(file_id) 
     redirect('/account')
 }
@@ -138,7 +137,7 @@ post('/files/generate_id/:file_id') { |file_id|
 # Downloads a single file
 #
 # @param [Integer] :file_id, the file to be downloaded
-post('/files/download/:file_id') { |file_id| 
+post('/files/:file_id/download') { |file_id| 
     send_file(get_full_file_path(file_id), :filename => get_file_name(file_id), :type => 'Application/octet-stream')
 }
 
@@ -146,7 +145,7 @@ post('/files/download/:file_id') { |file_id|
 #
 # @param [Integer] :file_id, the file to be publicised
 # @see Model#make_public
-post('/files/publicise/:file_id') { |file_id| 
+post('/files/:file_id/publicise') { |file_id| 
     make_public(file_id)
     redirect('/account')
 }
@@ -155,7 +154,7 @@ post('/files/publicise/:file_id') { |file_id|
 #
 # @param [Integer] :file_id, the file to be privatised
 # @see Model#make_private
-post('/files/privatise/:file_id') { |file_id|
+post('/files/:file_id/privatise') { |file_id|
     make_private(file_id)
     redirect('/account')
 }
@@ -184,7 +183,7 @@ get('/files/:file_url') { |file_url|
 #
 # @param [Integer] :file_id, the file to be shared
 # @see Model#share_file
-post('/files/share/:file_id') { |file_id|
+post('/files/:file_id/share') { |file_id|
     success = share_file(file_id, params[:email])
     if(!success)
         session[:error] = "Not a valid user"
